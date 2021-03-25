@@ -95,6 +95,8 @@ func (p *plugin) makeKubeSecret(secret []byte) (resmap.ResMap, error) {
 	}
 
 	options := &types.GeneratorOptions{
+		Labels:                p.Metadata.Labels,
+		Annotations:           p.Metadata.Annotations,
 		DisableNameSuffixHash: p.DisableNameSuffixHash,
 	}
 
