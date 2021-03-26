@@ -3,14 +3,10 @@ steps:
     args:
       - build
       - '--no-cache'
-      - '-t'
-      - 'gcr.io/$PROJECT_ID/kustomize:$COMMIT_SHA'
+      - '--tag=gcr.io/$PROJECT_ID/kustomize:$COMMIT_SHA'
+      - '--tag=gcr.io/$PROJECT_ID/kustomize:latest'
       - .
-      - '-f'
-      - Dockerfile
     id: Build
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - push
-      - 'gcr.io/$PROJECT_ID/kustomize:$COMMIT_SHA'
-    id: Push
+images:
+  - gcr.io/$PROJECT_ID/kustomize:$COMMIT_SHA
+  - gcr.io/$PROJECT_ID/kustomize:latest
