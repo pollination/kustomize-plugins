@@ -5,7 +5,7 @@ COPY . /go/src/github.com/pollination/kustomize-plugins/
 RUN cd /go/src/github.com/pollination/kustomize-plugins/ && make build-plugins
 
 FROM alpine:3.13
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache ca-certificates git
 ENV XDG_CONFIG_HOME=/
 COPY --from=build /go/src/github.com/pollination/kustomize-plugins/dist/kustomize /kustomize
 COPY --from=build /go/bin/kustomize /usr/local/bin/kustomize
